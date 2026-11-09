@@ -122,13 +122,17 @@ calendar.addEventListener("click", (event) => {
     opened[adventYear] = [...history, day];
     save(adventKey, opened);
   }
-  const [title, activity] = activities[day - 1];
-  byId("surprise-day").textContent = "December " + day;
+  renderCalendar(now);
+  showActivity(day - 1, "December " + day);
+});
+
+function showActivity(index, label) {
+  const [title, activity] = activities[index];
+  byId("surprise-day").textContent = label;
   byId("surprise-title").textContent = title;
   byId("surprise-text").textContent = activity;
-  renderCalendar(now);
   dialog.showModal();
-});
+}
 
 const giftForm = byId("gift-form");
 const giftItems = byId("gift-items");
